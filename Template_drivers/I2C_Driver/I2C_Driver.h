@@ -1,8 +1,7 @@
 #ifndef I2C_H
 #define I2C_H
 
-#include <stdint.h>
-
+#include "Global_Types.h"
 /* ================================
  * Types & enums
  * ================================ */
@@ -49,7 +48,7 @@ void i2c_ack_disable(void);
  * ================================ */
 
 uint32_t      i2c_get_status(void);
-bool          i2c_bus_busy(void);
+boolean_t          i2c_bus_busy(void);
 i2c_status_t  i2c_get_error(void);
 void          i2c_clear_errors(void);
 
@@ -60,8 +59,8 @@ void          i2c_clear_errors(void);
 void     i2c_write_byte(uint8_t byte);
 uint8_t  i2c_read_byte(void);
 
-bool     i2c_tx_ready(void);
-bool     i2c_rx_ready(void);
+boolean_t     i2c_tx_ready(void);
+boolean_t     i2c_rx_ready(void);
 
 /* ================================
  * Master mode API

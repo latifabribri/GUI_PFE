@@ -2,6 +2,8 @@
  * Core control
  * ================================ */
 
+#include "I2C_Driver.h"
+
 void i2c_init(uint32_t scl_hz)
 {
     // Implement initialization logic, e.g., configuring I2C clock based on scl_hz and setting up control registers
@@ -50,10 +52,10 @@ uint32_t i2c_get_status(void)
     // Implement logic to read and return the current status of the I2C peripheral, e.g., reading status registers
     return 0; // Placeholder return value
 }
-bool i2c_bus_busy(void)
+boolean_t i2c_bus_busy(void)
 {
     // Implement logic to check if the I2C bus is currently busy, e.g., checking specific status flags
-    return false; // Placeholder return value
+    return FALSE; // Placeholder return value
 }
 i2c_status_t i2c_get_error(void)
 {
@@ -82,13 +84,13 @@ uint8_t i2c_read_byte(void)
 boolean_t i2c_tx_ready(void)
 {
     // Implement logic to check if the transmit buffer is ready for new data
-    return false; // Placeholder return value
+    return FALSE; // Placeholder return value
 }
 
-bool i2c_rx_ready(void)
+boolean_t i2c_rx_ready(void)
 {
     // Implement logic to check if the receive buffer is ready for new data
-    return false; // Placeholder return value
+    return FALSE; // Placeholder return value
 }
 
 /* ================================
@@ -98,7 +100,7 @@ bool i2c_rx_ready(void)
 i2c_status_t i2c_master_write(
     uint8_t addr,
     const uint8_t *data,
-    size_t len)
+    uint32_t len)
 {
     // Implement master write logic, e.g., generating start condition, sending address and data bytes, and handling acknowledgments
     return 0; // Placeholder return value
@@ -107,7 +109,7 @@ i2c_status_t i2c_master_write(
 i2c_status_t i2c_master_read(
     uint8_t addr,
     uint8_t *data,
-    size_t len)
+    uint32_t len)
 {
     // Implement master read logic, e.g., generating start condition, sending address, reading data bytes, and handling acknowledgments
     return 0; // Placeholder return value
@@ -116,9 +118,9 @@ i2c_status_t i2c_master_read(
 i2c_status_t i2c_master_write_read(
     uint8_t addr,
     const uint8_t *tx_data,
-    size_t tx_len,
+    uint32_t tx_len,
     uint8_t *rx_data,
-    size_t rx_len)
+    uint32_t rx_len)
 {
     // Implement combined write-read logic, e.g., generating start condition, sending address and tx_data, generating repeated start, sending address again, and reading rx_data
     return 0; // Placeholder return value
@@ -155,29 +157,29 @@ i2c_slave_event_t i2c_slave_get_event(void)
 {
     // Implement logic to read slave event flags and return the appropriate event type
     return 0; // Placeholder return value}
+}
+/* ================================
+ * Interrupt support
+ * ================================ */
 
-    /* ================================
-     * Interrupt support
-     * ================================ */
+void i2c_irq_enable(void)
+{
+    // Implement logic to enable I2C interrupts, e.g., setting interrupt enable bits
+}
+void i2c_irq_disable(void)
+{
+    // Implement logic to disable I2C interrupts, e.g., clearing interrupt enable bits
+}
+void i2c_irq_handler(void)
+{
+    // Implement interrupt handling logic, e.g., checking status flags and invoking callbacks
+}
 
-    void i2c_irq_enable(void)
-    {
-        // Implement logic to enable I2C interrupts, e.g., setting interrupt enable bits
-    }
-    void i2c_irq_disable(void)
-    {
-        // Implement logic to disable I2C interrupts, e.g., clearing interrupt enable bits
-    }
-    void i2c_irq_handler(void)
-    {
-        // Implement interrupt handling logic, e.g., checking status flags and invoking callbacks
-    }
+/* ================================
+ * Bus recovery
+ * ================================ */
 
-    /* ================================
-     * Bus recovery
-     * ================================ */
-
-    void i2c_bus_recover(void)
-    {
-        // Implement bus recovery procedure, e.g., toggling SCL to free stuck slaves
-    }
+void i2c_bus_recover(void)
+{
+    // Implement bus recovery procedure, e.g., toggling SCL to free stuck slaves
+}
